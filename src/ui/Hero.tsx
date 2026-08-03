@@ -3,7 +3,7 @@ import { FiZap } from "react-icons/fi";
 
 export function Hero() {
   return (
-    <section className="mx-auto max-w-3xl px-5 pb-6 pt-20 text-center md:pt-32">
+    <section className="mx-auto max-w-3xl px-5 pb-6 pt-36 text-center md:pt-48">
 
 
       <motion.h1
