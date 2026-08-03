@@ -1,17 +1,4 @@
 import type { ProviderId, ShortenResult } from "./types";
-import { shorten as spoo } from "../providers/spoo";
-import { shorten as tinyurl } from "../providers/tinyurl";
-import { shorten as lnkua } from "../providers/lnkua";
-import { shorten as urlvanish } from "../providers/urlvanish";
-
-
-const SHORTENERS: Record<ProviderId, (url: string) => Promise<string>> = {
-  spoo,
-  tinyurl,
-  lnkua,
-  urlvanish,
-
-};
 
 export async function shortenWithProvider(
   provider: ProviderId,
@@ -19,11 +6,21 @@ export async function shortenWithProvider(
 ): Promise<ShortenResult> {
   const start = performance.now();
   try {
-    const shortUrl = await SHORTENERS[provider](originalUrl);
+    const response = await fetch("/api/shorten", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ provider, url: originalUrl }),
+    });
+
+    const body = await response.json();
+    if (!response.ok) {
+      throw new Error(body?.error || body?.message || response.statusText);
+    }
+
     return {
       provider,
       originalUrl,
-      shortUrl,
+      shortUrl: body.shortUrl,
       responseTimeMs: Math.round(performance.now() - start),
       status: "success",
     };
