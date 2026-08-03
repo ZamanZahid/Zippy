@@ -55,5 +55,28 @@ function ZipCompressAnimation() {
             https://example.com/products/summer-collection?ref=newsletter&id=48213
           </span>
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: [0, 0, 1], scale: [0.85, 0.85, 1] }}
+          transition={{ duration: 2.8, repeat: Infinity, repeatDelay: 1.2, times: [0, 0.55, 1] }}
+          className="absolute inset-0 flex items-center justify-center"
+        >
+          <span className="whitespace-nowrap rounded-xl bg-zip-blue px-5 py-2 font-mono text-sm font-medium text-white shadow-soft">
+            zippy.link/aB3xZ9
+          </span>
+        </motion.div>
+
+        <motion.div
+          aria-hidden
+          initial={{ left: "6%" }}
+          animate={{ left: ["6%", "112%", "112%"], opacity: [1, 1, 0] }}
+          transition={{ duration: 2.8, repeat: Infinity, repeatDelay: 1.2, times: [0, 0.55, 1] }}
+          className="absolute top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full bg-zip-yellow text-ink shadow-soft"
+        >
+          <FiZap size={20} />
+        </motion.div>
+      </div>
+    </div>
   );
 }
