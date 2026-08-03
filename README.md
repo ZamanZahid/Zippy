@@ -47,7 +47,7 @@ npm run preview
 ## Screenshots
 
 <div align="center">
-  <img src="/Zippy_Home_Page.png" alt="Zippy Home Page" style="width: 100%; max-width: 700px;"/>
+  <img src="public/Zippy_home_page.png" alt="Zippy Home Page" style="width: 100%; max-width: 700px;"/>
 </div>
 
 ## Author
